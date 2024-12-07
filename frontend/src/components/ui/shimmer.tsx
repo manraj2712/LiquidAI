@@ -1,6 +1,14 @@
 import React from "react";
 
-const Shimmer = ({ width, height = "4rem", className = "" }) => {
+const Shimmer = ({
+  width,
+  height = "4rem",
+  className = "",
+}: {
+  width: string;
+  height?: string;
+  className?: string;
+}) => {
   return (
     <div
       className={`relative overflow-hidden rounded ${className}`}

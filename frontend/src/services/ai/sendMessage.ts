@@ -6,9 +6,11 @@ import { generateMessageId } from "@/utils/id";
 export const getResponseForInput = async ({
   chatId,
   message,
+  chainId,
 }: {
   chatId: string;
   message: string;
+  chainId: number;
 }): Promise<Message> => {
   try {
     const response = await callApi({
@@ -18,6 +20,7 @@ export const getResponseForInput = async ({
         data: {
           chatId,
           message,
+          chainId,
         },
       },
     });

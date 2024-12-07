@@ -4,10 +4,12 @@ import { useAppContext } from "@/app/context/AppContext";
 import { generateMessageId } from "@/utils/id";
 import { contentType } from "@/constants/contentType";
 import { getResponseForInput } from "@/services/ai/sendMessage";
+import { useAccount } from "wagmi";
 
 const Intro = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { setInput, addMessage, chatId } = useAppContext();
+  const { chainId } = useAccount();
 
   const handleSubmit = async (value: string) => {
     const formattedInput = value.toLowerCase().trim();
@@ -23,6 +25,7 @@ const Intro = () => {
     const newMessage = await getResponseForInput({
       chatId,
       message: formattedInput,
+      chainId: chainId!,
     });
     addMessage(newMessage);
   };

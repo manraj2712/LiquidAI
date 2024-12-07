@@ -119,6 +119,7 @@ export const PositionSelector = () => {
                   const response = await getResponseForInput({
                     chatId,
                     message: `pool=${position.token0.symbol}/${position.token1.symbol}, nftId=${position.nftId}, chainId=${chainId}, provider=${position.provider}`,
+                    chainId: chainId!,
                   });
                   addMessage(response);
                 }}

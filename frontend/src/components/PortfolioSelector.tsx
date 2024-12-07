@@ -94,6 +94,7 @@ export default function PortfolioSelector() {
     const response = await getResponseForInput({
       chatId,
       message: `token ${selectedToken?.contract}`,
+      chainId: chainId!,
     });
     addMessage(response);
   };

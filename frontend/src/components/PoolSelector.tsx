@@ -5,16 +5,19 @@ import { aerodromeDetails } from "@/providers/aerodrome/config/details";
 import { uniswapDetails } from "@/providers/uniswap/config/details";
 import { getResponseForInput } from "@/services/ai/sendMessage";
 import { PoolDetails } from "@/types/pools";
+import { useAccount } from "wagmi";
 
 const PoolSelector = () => {
   const [pools, setPools] = useState<PoolDetails[]>([]);
   const [selectedPool, setSelectedPool] = useState<PoolDetails | null>(null);
   const { addMessage, chatId } = useAppContext();
 
+  const { chainId } = useAccount();
+
   useEffect(() => {
     const fetchPools = async () => {
       const factory = new LiquidityFactory();
-      const response = await factory.getAllPools();
+      const response = await factory.getAllPools(chainId!);
       setPools(response);
     };
     fetchPools();
@@ -25,6 +28,7 @@ const PoolSelector = () => {
     const response = await getResponseForInput({
       message: `I want to select pool ${pool.token0.symbol}/${pool.token1.symbol} and provider is ${pool.provider}`,
       chatId,
+      chainId: chainId!,
     });
     addMessage(response);
   };

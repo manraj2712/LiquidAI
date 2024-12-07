@@ -14,11 +14,14 @@ import { generateMessageId } from "@/utils/id";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { useAccount } from "wagmi";
 
 const Prompt = () => {
   const { input, setInput, createNewChat, addMessage, chatId } =
     useAppContext();
   const [newInput, setNewInput] = useState<string>("");
+
+  const { chainId } = useAccount();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewInput(e.target.value);
@@ -38,6 +41,7 @@ const Prompt = () => {
     const newMessage = await getResponseForInput({
       chatId,
       message: trimmedInput,
+      chainId: chainId!,
     });
     addMessage(newMessage);
   };

@@ -302,6 +302,7 @@ const Migrate = () => {
 
     const response = await getResponseForInput({
       chatId: chainId?.toString() ?? "",
+      chainId: chainId!,
       message: `srcPoolAddress=${position.poolAddress} destPoolAddress=${pool.poolAddress} srcProvider=${position.provider} destProvider=${pool.provider} chainId=${chainId} nftId=${position.nftId}`,
     });
     addMessage(response);
