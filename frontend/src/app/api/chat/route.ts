@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   try {
     const { chatId, message, chainId } = await request.json();
     const response = await callApi({
-      url: "http://localhost:8000/chat",
+      url: "https://liquidai-lqtpzlbt3q-lz.a.run.app/chat",
       options: {
         method: "POST",
         data: {
@@ -16,9 +16,7 @@ export async function POST(request: NextRequest) {
         },
       },
     });
-    return NextResponse.json(parseAiResponse(response, chainId), {
-      status: 200,
-    });
+    return NextResponse.json(parseAiResponse(response, chainId), { status: 200 });
   } catch (error) {
     console.error("Error while fetching response from ai", error);
     return NextResponse.json(
