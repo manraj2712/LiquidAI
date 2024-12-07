@@ -24,28 +24,40 @@ const Prompt = () => {
     setNewInput(e.target.value);
   };
 
-  const handleSubmit = async () => {
-    setInput(newInput.toLowerCase().trim());
-    setNewInput("");
+  const handleSubmit = async (inputValue: string) => {
+    const trimmedInput = inputValue.toLowerCase().trim();
+    if (trimmedInput === "") return; // Prevent firing on empty input
+    setInput(trimmedInput);
+    setNewInput(""); // Clear the input field
     addMessage({
       id: generateMessageId(),
-      content: newInput,
+      content: trimmedInput,
       contentType: contentType.text,
       from: "user",
     });
-    const newMessage = await getResponseForInput({ chatId, message: newInput });
+    const newMessage = await getResponseForInput({
+      chatId,
+      message: trimmedInput,
+    });
     addMessage(newMessage);
+  };
+
+  const handleSelectChange = async (value: string) => {
+    setNewInput(value);
+    await handleSubmit(value); // Use the selected value directly for submission
   };
 
   const handleNewChat = () => {
     setInput("");
     createNewChat();
   };
+
   const prompts = [
-    { value: "addLiquidity", label: "Add Liquidity" },
-    { value: "removeLiquidity", label: "Remove Liquidity" },
-    { value: "migrateLiquidity", label: "Migrate Liquidity" },
+    { value: "add Liquidity", label: "Add Liquidity" },
+    { value: "remove Liquidity", label: "Remove Liquidity" },
+    { value: "migrate Liquidity", label: "Migrate Liquidity" },
   ];
+
   return (
     <>
       <div className="w-full flex items-center justify-center absolute bottom-0">
@@ -66,7 +78,7 @@ const Prompt = () => {
 
               <input
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") handleSubmit();
+                  if (e.key === "Enter") handleSubmit(newInput);
                 }}
                 type="text"
                 value={newInput}
@@ -77,8 +89,8 @@ const Prompt = () => {
             </div>
           </div>
           <div className="relative z-10 bg-gray-60 rounded-lg">
-            <Select>
-              <SelectTrigger className="w-full  text-white border-none rounded-md py-2 pl-10 pr-3 flex items-center hover:border-[#4A5568] transition-all">
+            <Select onValueChange={handleSelectChange}>
+              <SelectTrigger className="w-full text-white border-none rounded-md py-2 pl-10 pr-3 flex items-center hover:border-[#4A5568] transition-all">
                 <Image
                   src="/select-icon.svg"
                   alt="select-icon"
@@ -98,7 +110,7 @@ const Prompt = () => {
                     <SelectItem
                       key={prompt.value}
                       value={prompt.value}
-                      className="px-4 py-2  hover:text-white focus:bg-gray-10 focus:text-white transition-all"
+                      className="px-4 py-2 hover:text-white focus:bg-gray-10 focus:text-white transition-all"
                     >
                       {prompt.label}
                     </SelectItem>
@@ -108,7 +120,9 @@ const Prompt = () => {
             </Select>
           </div>
           <Button
-            onClick={newInput.trim() === "" ? undefined : handleSubmit}
+            onClick={
+              newInput.trim() === "" ? undefined : () => handleSubmit(newInput)
+            }
             disabled={newInput.trim() === ""}
             className={`ml-2 p-2 rounded-full text-white transition-all ${
               newInput.trim() === ""
