@@ -6,8 +6,6 @@ import Prompt from "@/components/Prompt";
 import "@rainbow-me/rainbowkit/styles.css";
 import Image from "next/image";
 import { useAppContext } from "./context/AppContext";
-import Link from "next/link";
-import Spinner from "@/components/ui/Spinner";
 
 export default function Home() {
   const { messages } = useAppContext();
