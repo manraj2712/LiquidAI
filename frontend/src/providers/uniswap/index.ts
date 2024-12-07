@@ -122,6 +122,6 @@ export class UniswapProvider implements IProvider {
     };
   };
   getAllPools = async (chainId: number) => {
-    return Object.values(this.pools[chainId]);
+    return this.pools[chainId] ? Object.values(this.pools[chainId]) : [];
   };
 }

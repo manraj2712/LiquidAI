@@ -37,4 +37,39 @@ export const uniswapV3Pools: ProviderPools = {
       provider: uniswapDetails.id,
     },
   },
+  [supportedChainIds.polygon]: {
+    "0x4018d9514a5da6ba6373e0d47B4BD72934B3b92E": {
+      tickSpacing: 10,
+      fee: 500,
+      provider: uniswapDetails.id,
+      address: "0x4018d9514a5da6ba6373e0d47B4BD72934B3b92E",
+      token0: {
+        decimals: 18,
+        address: "0x11CD37bb86F65419713f30673A480EA33c826872",
+        symbol: "WETH",
+      },
+      token1: {
+        decimals: 6,
+        address: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        symbol: "USDC",
+      },
+    },
+
+    "0x3F6CFB3e592F218F426F3457828779349FEa6389": {
+      provider: uniswapDetails.id,
+      fee: 100,
+      tickSpacing: 1,
+      address: "0x3F6CFB3e592F218F426F3457828779349FEa6389",
+      token0: {
+        decimals: 8,
+        address: "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
+        symbol: "WBTC",
+      },
+      token1: {
+        decimals: 6,
+        address: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        symbol: "USDC",
+      },
+    },
+  },
 };
