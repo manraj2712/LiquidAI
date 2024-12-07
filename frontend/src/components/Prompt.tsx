@@ -17,7 +17,7 @@ import { useAccount } from "wagmi";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 const Prompt = () => {
-  const { input, setInput, createNewChat, addMessage, chatId } =
+  const { input, setInput, createNewChat, addMessage, chatId, removeMessage } =
     useAppContext();
   const [newInput, setNewInput] = useState<string>("");
 
@@ -43,6 +43,8 @@ const Prompt = () => {
       chatId,
       message: trimmedInput,
       chainId: chainId!,
+      addMessage,
+      removeMessage,
     });
     addMessage(newMessage);
   };

@@ -10,5 +10,6 @@ export const contentType = {
   connectWallet: "connectWallet",
   transactionDetails: "transactionDetails",
   chooseMigrationPath: "chooseMigrationPath",
+  aiThinking: "aiThinking",
   dos: "dos",
 } as const;

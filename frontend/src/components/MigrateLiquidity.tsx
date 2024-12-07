@@ -290,7 +290,7 @@ const Migrate = () => {
 
   const { chainId } = useAccount();
 
-  const { addMessage } = useAppContext();
+  const { addMessage, removeMessage } = useAppContext();
   const [pools, setPools] = useState<PoolDetails[]>([]);
 
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -302,11 +302,12 @@ const Migrate = () => {
     setIsSubmitted(true);
     const position = selectedPosition;
     const pool = selectedPool;
-
     const response = await getResponseForInput({
       chatId: chainId?.toString() ?? "",
       chainId: chainId!,
       message: `srcPoolAddress=${position.poolAddress} destPoolAddress=${pool.poolAddress} srcProvider=${position.provider} destProvider=${pool.provider} chainId=${chainId} nftId=${position.nftId}`,
+      addMessage,
+      removeMessage,
     });
     addMessage(response);
   };

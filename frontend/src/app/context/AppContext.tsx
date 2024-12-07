@@ -9,6 +9,7 @@ interface AppContextType {
   createNewChat: () => void;
   messages: Message[];
   addMessage: (message: Message) => void;
+  removeMessage: (messageId: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -22,6 +23,12 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   const addMessage = (message: Message) => {
     setMessages((prevMessages) => [...prevMessages, message]);
+  };
+
+  const removeMessage = (messageId: string) => {
+    setMessages((prevMessages) =>
+      prevMessages.filter((message) => message.id !== messageId)
+    );
   };
 
   const createNewChatId = () => {
@@ -46,6 +53,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         createNewChat: createNewChatId,
         messages,
         addMessage,
+        removeMessage,
       }}
     >
       {children}

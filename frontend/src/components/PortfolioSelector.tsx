@@ -54,7 +54,7 @@ const TokenRow = ({
 
 export default function PortfolioSelector({ isZapIn }: { isZapIn: boolean }) {
   const [selectedToken, setSelectedToken] = useState<TokenInfo | null>(null);
-  const { addMessage, chatId } = useAppContext();
+  const { addMessage, chatId, removeMessage } = useAppContext();
   const { address, chainId } = useAccount();
   const [portfolioTokens, setPortfolioTokens] = useState<TokenReponse>({});
   const [isLoading, setIsLoading] = useState(false);
@@ -95,6 +95,8 @@ export default function PortfolioSelector({ isZapIn }: { isZapIn: boolean }) {
       chatId,
       message: `token ${selectedToken?.contract}`,
       chainId: chainId!,
+      addMessage,
+      removeMessage,
     });
     addMessage(response);
   };

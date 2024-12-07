@@ -11,6 +11,7 @@ import PortfolioSelector from "./PortfolioSelector";
 import { PositionSelector } from "./PositionSelector";
 import RangeSelector from "./Range";
 import RemoveTransactionDetails from "./RemoveTransactionDetails";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export const TextMessage = ({ message }: { message: string }) => (
   <p className="text-white bg-gray-40 px-4 py-2 rounded-lg border-thin border-gray-20">
@@ -48,6 +49,15 @@ const botMessage = (message: Message) => {
     ),
     [contentType.migrateLiquidity]: (
       <MigrateTransactionDetails message={message} />
+    ),
+    [contentType.aiThinking]: (
+      <div className="h-16 w-32">
+        <DotLottieReact
+          src="https://lottie.host/bf8353e4-3803-4601-8e10-7e10c051e9c3/LyigAWtdQz.lottie"
+          loop
+          autoplay
+        />
+      </div>
     ),
     [contentType.poolSelector]: <PoolSelector />,
     [contentType.chooseMigrationPath]: <Migrate />,

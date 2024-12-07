@@ -8,7 +8,7 @@ import { useAccount } from "wagmi";
 
 const Intro = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { setInput, addMessage, chatId } = useAppContext();
+  const { setInput, addMessage, chatId, removeMessage } = useAppContext();
   const { chainId } = useAccount();
 
   const handleSubmit = async (value: string) => {
@@ -26,6 +26,8 @@ const Intro = () => {
       chatId,
       message: formattedInput,
       chainId: chainId!,
+      addMessage,
+      removeMessage,
     });
     addMessage(newMessage);
   };

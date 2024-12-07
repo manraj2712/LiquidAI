@@ -10,7 +10,7 @@ import { useAccount } from "wagmi";
 const PoolSelector = () => {
   const [pools, setPools] = useState<PoolDetails[]>([]);
   const [selectedPool, setSelectedPool] = useState<PoolDetails | null>(null);
-  const { addMessage, chatId } = useAppContext();
+  const { addMessage, chatId, removeMessage } = useAppContext();
 
   const { chainId } = useAccount();
 
@@ -29,6 +29,8 @@ const PoolSelector = () => {
       message: `I want to select pool ${pool.token0.symbol}/${pool.token1.symbol} and provider is ${pool.provider}`,
       chatId,
       chainId: chainId!,
+      removeMessage,
+      addMessage,
     });
     addMessage(response);
   };

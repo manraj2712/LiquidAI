@@ -7,12 +7,23 @@ export const getResponseForInput = async ({
   chatId,
   message,
   chainId,
+  addMessage,
+  removeMessage,
 }: {
   chatId: string;
   message: string;
   chainId: number;
+  addMessage: (message: Message) => void;
+  removeMessage: (messageId: string) => void;
 }): Promise<Message> => {
+  const messageId = generateMessageId();
   try {
+    addMessage({
+      id: messageId,
+      content: message,
+      contentType: contentType.aiThinking,
+      from: "bot",
+    });
     const response = await callApi({
       url: "/api/chat",
       options: {
@@ -33,5 +44,7 @@ export const getResponseForInput = async ({
       contentType: contentType.text,
       from: "bot",
     };
+  } finally {
+    removeMessage(messageId);
   }
 };

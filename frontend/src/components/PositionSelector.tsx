@@ -35,7 +35,7 @@ export const PositionSelector = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userPositions, setUserPositions] = useState<UserPositionDetails[]>([]);
   const { address, chainId } = useAccount();
-  const { addMessage, chatId } = useAppContext();
+  const { addMessage, chatId, removeMessage } = useAppContext();
   const [selectedPosition, setSelectedPosition] =
     useState<UserPositionDetails | null>(null);
 
@@ -116,6 +116,8 @@ export const PositionSelector = () => {
                     chatId,
                     message: `pool=${position.token0.symbol}/${position.token1.symbol}, nftId=${position.nftId}, chainId=${chainId}, provider=${position.provider}`,
                     chainId: chainId!,
+                    addMessage,
+                    removeMessage,
                   });
                   addMessage(response);
                 }}
