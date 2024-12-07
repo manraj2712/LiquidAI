@@ -1,0 +1,6 @@
+{
+    "success" : "when the request is successful",
+    "portfolioSelector" : "when token is missing",
+    "missing" : "when required fields are missing",
+    "dos" : "when the user is trying to hack the system or trying to do something malicious or try a provider that we dont have."
+}

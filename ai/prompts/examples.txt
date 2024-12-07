@@ -1,0 +1,35 @@
+user - add 1 usdc to eth/usdc pool on aerodrome
+breakdown - add liquidity
+pool - eth/usdc
+zapInToken - usdc
+amount - 1
+provider - aerodrome
+
+
+user - hi i want to add liquidity to usdc/eth pool on uniswap using usdc token
+breakdown - add liquidity
+pool - usdc/eth
+zapInToken - usdc
+amount - missing
+provider - uniswap
+
+
+user - hi i want to add liquidity
+breakdown - add liquidity
+everything else - missing
+
+
+user - migrate eth/usdc pool on Uniswap to USDC/BTC on aerodrome
+breakdown - migrate pool
+srcPoolAddress - eth/usdc
+destPoolAddress - usdc/btc
+srcProvider - Uniswap
+destProvider - aerodrome
+
+
+user - migrate eth/usdc pool on aerodrome to USDC/BTC on aerodrome
+breakdown - migrate pool
+srcPoolAddress - eth/usdc
+destPoolAddress - usdc/btc
+srcProvider - aerodrome
+destProvider - aerodrome

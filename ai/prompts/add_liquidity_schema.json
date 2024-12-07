@@ -1,0 +1,10 @@
+{
+    "API": "/addLiquidity",
+    "payload": {
+        "poolAddress": "string",
+        "chainId": "number",
+        "zapInToken": "HexString",
+        "zapInAmount": "string",
+        "provider": "string"
+    }
+}

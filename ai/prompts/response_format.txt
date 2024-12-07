@@ -1,0 +1,13 @@
+Final Response JSON format:
+{
+    "status": string,
+    "description": "string",
+    "API": "string",
+    "payload": "object",
+    "missing_data": []
+}
+
+Never Assume zapInToken always as user for it.
+
+for migrate : if user input zapOutToken as null or undefined, dont include it in the payload.
+

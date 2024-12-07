@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.gradient-text {
+  background-image: linear-gradient(180deg, #ffffff 0%, #595959 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.range-button-active {
+  background: linear-gradient(270deg, #867aed 0%, #1421d5 100%);
+}

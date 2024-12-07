@@ -1,0 +1,11 @@
+{
+    "API": "/removeLiquidity",
+    "payload": {
+        "poolAddress": "string",
+        "provider": "string",
+        "chainId": "number",
+        "nftId": "string",
+        "zapOutToken": "HexString (can be null)"
+
+    }
+}

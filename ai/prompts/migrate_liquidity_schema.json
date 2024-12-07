@@ -1,0 +1,11 @@
+{
+    "API": "/migrateLiquidity",
+    "payload": {
+        "srcPoolAddress": "string",
+        "destPoolAddress": "string",
+        "srcProvider": "string",
+        "destProvider": "string",
+        "nftId": "string",
+        "chainId": "number"
+    }
+}
