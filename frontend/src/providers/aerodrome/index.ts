@@ -111,6 +111,8 @@ export class AerodromeProvider implements IProvider {
   };
 
   getAllPools = async (chainId: number) => {
-    return Object.values(aerodromePools[chainId]);
+    return aerodromePools[chainId]
+      ? Object.values(aerodromePools[chainId])
+      : [];
   };
 }

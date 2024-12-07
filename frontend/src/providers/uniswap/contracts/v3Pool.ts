@@ -71,8 +71,8 @@ export class UniswapV3Pool {
 
     return {
       feeGrowthOutsideLower0: feeGrowthGlobalLowerX128[2],
-      feeGrowthOutsideLower1: feeGrowthGlobalUpperX128[3],
-      feeGrowthOutsideUpper0: feeGrowthGlobalLowerX128[2],
+      feeGrowthOutsideLower1: feeGrowthGlobalLowerX128[3],
+      feeGrowthOutsideUpper0: feeGrowthGlobalUpperX128[2],
       feeGrowthOutsideUpper1: feeGrowthGlobalUpperX128[3],
     };
   };
