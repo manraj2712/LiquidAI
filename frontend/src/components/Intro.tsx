@@ -55,7 +55,7 @@ const Intro = () => {
               className="bg-gray-10 py-3 px-5 rounded-lg text-[#FDFDFD] w-1/2 text-center"
               onClick={() => handleSubmit("add liquidity")}
             >
-              Add Liquidity
+              Add 1 USDC to Uniswap WETH/USDC Pool
             </Button>
             <Button
               className="bg-gray-10 py-3 px-5 rounded-lg text-[#FDFDFD] w-1/2 text-center"

@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { formatUnits } from "viem";
 import AIThinkingState from "./AiThinking";
 import TransactionStatusDetails from "./TransactionStatusDetails";
+import { uniswapDetails } from "@/providers/uniswap/config/details";
+import { aerodromeDetails } from "@/providers/aerodrome/config/details";
 
 export default function MigrateTransactionDetails({
   message,
@@ -56,7 +58,7 @@ export default function MigrateTransactionDetails({
 
   if (!txnData) {
     return (
-      <div className="bg-gray-40 border-thin max-w-md border-gray-20 text-white rounded-lg p-6 space-y-6">
+      <div className="bg-gray-40 border-thin max-w-lg border-gray-20 w-full text-white rounded-lg p-6 space-y-6">
         <h2 className="text-xl font-medium">Transaction Details</h2>
         <p className="text-sm text-zinc-400">
           Failed to fetch transaction details
@@ -67,7 +69,7 @@ export default function MigrateTransactionDetails({
   const { poolSymbol, provider, token0, token1 } = txnData.addLiquidityDetails;
 
   return (
-    <div className="bg-gray-40 border-thin max-w-md border-gray-20 text-white rounded-lg p-6 space-y-6">
+    <div className="bg-gray-40 border-thin w-full max-w-lg border-gray-20 text-white rounded-lg p-6 space-y-6">
       <h2 className="text-xl font-medium">Transaction Details</h2>
 
       <div className="space-y-2">
@@ -105,12 +107,26 @@ export default function MigrateTransactionDetails({
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <span className="text-zinc-400">Slippage</span>
-          <span>{0.5}</span>
+          <span>{0.5}%</span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-zinc-400">Protocol</span>
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 bg-purple-600 rounded-full"></div>
+            {provider.toLowerCase() === uniswapDetails.id ? (
+              <img
+                src={uniswapDetails.logo}
+                width={16}
+                height={16}
+                className="rounded-full"
+              />
+            ) : (
+              <img
+                src={aerodromeDetails.logo}
+                width={16}
+                height={16}
+                className="rounded-full"
+              />
+            )}
             <span>{provider}</span>
           </div>
         </div>
@@ -120,28 +136,12 @@ export default function MigrateTransactionDetails({
             <span className="text-sm bg-zinc-800 px-2 py-1 rounded">
               {poolSymbol}
             </span>
-            {/* <span className="text-zinc-400">{pool.fee}</span> */}
           </div>
         </div>
-        {/* <div className="flex justify-between items-center"> */}
-        {/* <span className="text-zinc-400">Liquidity Allocation</span> */}
-        {/* <div className="flex items-center gap-2">
-            {liquidityAllocation.map((allocation, index) => (
-              <div key={index} className="flex items-center gap-1">
-                <div
-                  className={`w-4 h-4 ${
-                    allocation.name === "SOL" ? "bg-blue-500" : "bg-blue-600"
-                  } rounded-full`}
-                ></div>
-                <span>{allocation.name}</span>
-                <span className="text-zinc-400">{allocation.percentage}</span>
-              </div>
-            ))}
-          </div> */}
-        {/* </div> */}
+
         <div className="flex justify-between items-center">
           <span className="text-zinc-400">APY</span>
-          {/* <span>{apy}</span> */}
+          <span>{"20%"}</span>
         </div>
       </div>
       {txnStatus && <TransactionStatusDetails status={txnStatus} />}

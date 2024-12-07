@@ -36,7 +36,7 @@ const PoolSelector = ({
   }
   return pools.map((pool, index) => (
     <button
-      className={`w-full justify-start p-4 h-auto transition-all hover:bg-zinc-900 hover:shadow-lg rounded-lg  border border-zinc-800 bg-gray-70 `}
+      className={`w-full justify-start p-4 h-auto transition-all hover:bg-zinc-900 hover:shadow-lg rounded-lg  border border-zinc-800 bg-gray-20 `}
       key={pool.token0.address + pool.token1.address + index}
       onClick={() => setSelectedPool(pool)}
     >
@@ -122,7 +122,7 @@ const PositionRow = ({
   return (
     <Button
       variant="ghost"
-      className={`w-full justify-start p-4 h-auto transition-all bg-gray-70`}
+      className={`w-full justify-start p-4 h-auto transition-all hover:bg-zinc-900 hover:shadow-lg border border-zinc-800 bg-gray-20`}
       onClick={onClick}
     >
       <PositionDetailsRow position={position} />
@@ -181,7 +181,7 @@ const PositionSelector = ({
       <h3 className="text-lg font-medium text-white mb-4">
         Select Your Position to Migrate
       </h3>
-      <div className="h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-20 p-4 overflow-y-scroll">
+      <div className="h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
         <div className="space-y-3">
           {userPositions.map((position, index) => (
             <PositionRow
@@ -323,7 +323,7 @@ const Migrate = () => {
             <h3 className="text-lg font-medium text-white mb-4">
               Select Your New Pool to Migrate
             </h3>
-            <div className="flex flex-col gap-4 h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-20 p-4 overflow-y-scroll">
+            <div className="flex flex-col gap-4 h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
               <PoolSelector
                 pools={pools}
                 setPools={setPools}

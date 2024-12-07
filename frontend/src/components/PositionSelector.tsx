@@ -23,7 +23,7 @@ const PositionRow = ({
   return (
     <Button
       variant="ghost"
-      className={`w-full justify-start p-4 h-auto transition-all bg-gray-70`}
+      className={`w-full justify-start p-4 h-auto transition-all bg-gray-20`}
       onClick={onClick}
     >
       <PositionDetailsRow position={position} />
@@ -86,7 +86,7 @@ export const PositionSelector = () => {
   return (
     <div className="space-y-4 m-4">
       <h3 className="text-lg font-medium text-white">Select Source Pool</h3>
-      <div className="h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-20 p-4 overflow-y-scroll">
+      <div className="h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
         <div className="space-y-3">
           {userPositions?.length === 0 ? (
             <div className="flex items-center justify-between  text-white rounded-lg p-4 w-[300px] h-[80px]">

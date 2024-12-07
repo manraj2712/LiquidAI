@@ -77,6 +77,7 @@ export default {
           50: "#121212",
           60: "#1D201E",
           70: " #1C1C1C",
+          80: "#1A1E1B",
         },
       },
       borderRadius: {

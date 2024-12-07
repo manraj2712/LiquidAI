@@ -15,11 +15,9 @@ const Header = () => {
         />
         <p className="text-white">Liquid.ai</p>
       </div>
-      {/* <Button className="range-button-active"> */}
       <div className="z-20">
         <ConnectButton />
       </div>
-      {/* </Button> */}
     </div>
   );
 };

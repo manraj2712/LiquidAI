@@ -25,7 +25,7 @@ const TokenRow = ({
     <Button
       key={token.contract}
       onClick={onClick}
-      className={`w-full flex gap-4 items-center justify-between rounded-lg bg-gray-80 hover:bg-gray-30 px-2 py-8 ${
+      className={`w-full flex gap-4 items-center justify-between rounded-lg bg-gray-40 hover:bg-gray-30 px-2 py-8 ${
         isSelected ? "bg-gray-30" : ""
       }`}
     >
