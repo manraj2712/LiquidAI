@@ -52,24 +52,26 @@ export default function TransactionStatusDetails({
         ) : ([txnStatus.failed, txnStatus.success] as string[]).includes(
             status
           ) ? (
-          <Link
-            href={`${chainsData[chainId!].blockExplorerUrl}/tx/${txnHash}`}
-            className="cursor-pointer"
-            target="_blank"
-          >
-            <Image
-              src={"/link.svg"}
-              alt="tick-icon"
-              className="w-4 cursor-pointer"
-            />
-          </Link>
+          <img src={"/tick.svg"} alt="tick-icon" className="w-4" />
         ) : null}
       </div>
       {(txnStatus.success === status || txnStatus.failed === status) && (
         <div className="flex justify-between items-center">
           <span className="text-zinc-400">Status</span>
           {txnStatus.success === status ? (
-            <img src={"/tick.svg"} alt="tick-icon" className="w-4" />
+            <Link
+              href={`${chainsData[chainId!].blockExplorerUrl}/tx/${txnHash}`}
+              className="cursor-pointer"
+              target="_blank"
+            >
+              <Image
+                src={"/link.svg"}
+                alt="tick-icon"
+                className="w-4 cursor-pointer bg-white"
+                width={25}
+                height={25}
+              />
+            </Link>
           ) : (
             <p>Failed</p>
           )}

@@ -11,3 +11,16 @@
 .range-button-active {
   background: linear-gradient(270deg, #867aed 0%, #1421d5 100%);
 }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotate 1s linear infinite;
+}

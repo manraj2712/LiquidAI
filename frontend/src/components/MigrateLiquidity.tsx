@@ -313,7 +313,7 @@ const Migrate = () => {
   };
 
   return (
-    <div className="max-w-4xl w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-4xl w-4xl">
       <h2 className="text-lg font-medium text-white text-left bg-gray-40 px-4 py-2 rounded-lg border-thin border-gray-20 mb-4">
         Choose the pools to migrate your liquidity.
       </h2>
@@ -435,7 +435,7 @@ const Migrate = () => {
           </div>
         )}
 
-        {isSubmitted && (
+        {!isSubmitted && (
           <div className="flex items-center px-4 py-2 justify-center">
             <Button
               className="w-full py-3 px-4 range-button-active disabled:bg-gray-500 disabled:cursor-not-allowed text-white font-medium rounded-full transition-colors"
