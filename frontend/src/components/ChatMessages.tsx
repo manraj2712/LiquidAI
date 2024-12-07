@@ -28,7 +28,7 @@ const userMessage = (message: string) => {
 };
 
 const BotMessageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-start gap-4">
+  <div className="flex items-start gap-4 w-full max-w-2xl">
     <Image src="/logo-black.svg" alt="logo-black" width={50} height={50} />
     {children}
   </div>
@@ -36,7 +36,11 @@ const BotMessageWrapper = ({ children }: { children: React.ReactNode }) => (
 
 const botMessage = (message: Message) => {
   const contentMapping: Record<string, React.ReactNode> = {
-    [contentType.portfolioSelector]: <PortfolioSelector />,
+    [contentType.portfolioSelector]: (
+      <PortfolioSelector
+        isZapIn={message.content === contentType.addLiquidity ? true : false}
+      />
+    ),
     [contentType.rangeSelector]: <RangeSelector />,
     [contentType.addLiquidity]: <AddTransactionDetails message={message} />,
     [contentType.removeLiquidity]: (

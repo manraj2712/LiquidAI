@@ -25,7 +25,7 @@ const TokenRow = ({
     <Button
       key={token.contract}
       onClick={onClick}
-      className={`w-full flex gap-4 items-center justify-between rounded-lg bg-gray-40 hover:bg-gray-30 px-2 py-8 ${
+      className={`w-full flex gap-4 items-center justify-between rounded-lg bg-gray-80 hover:bg-gray-30 px-2 py-8 ${
         isSelected ? "bg-gray-30" : ""
       }`}
     >
@@ -52,7 +52,7 @@ const TokenRow = ({
   );
 };
 
-export default function PortfolioSelector() {
+export default function PortfolioSelector({ isZapIn }: { isZapIn: boolean }) {
   const [selectedToken, setSelectedToken] = useState<TokenInfo | null>(null);
   const { addMessage, chatId } = useAppContext();
   const { address, chainId } = useAccount();
@@ -109,7 +109,9 @@ export default function PortfolioSelector() {
     return (
       <div className="flex flex-col gap-4 max-w-md">
         <h2 className="text-lg font-medium text-white mb-4 text-left bg-gray-40 px-4 py-2 rounded-lg border-thin border-gray-20">
-          Select the token which you want to zap in to add liquidity:
+          {isZapIn
+            ? "Select the token which you want to zap in to add liquidity"
+            : "Select the token which you want to zap out from the liquidity"}
         </h2>
         <div className="space-y-4 bg-gray-40 rounded-lg px-4 py-4 max-w-md">
           <h2 className="text-xl text-white mb-2">Your Portfolio</h2>
@@ -161,7 +163,9 @@ export default function PortfolioSelector() {
   return (
     <div className="w-full max-w-md mx-auto px-6 rounded-xl flex gap-3 flex-col text-white">
       <h2 className="text-lg font-medium text-white mb-4 text-left bg-gray-40 px-4 py-2 rounded-lg border-thin border-gray-20">
-        Select the token which you want to zap in to add liquidity:
+        {isZapIn
+          ? "Select the token which you want to zap in to add liquidity"
+          : "Select the token which you want to zap out from the liquidity"}{" "}
       </h2>
 
       <div className="bg-gray-40 rounded-lg border-thin border-gray-20">

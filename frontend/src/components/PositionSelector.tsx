@@ -33,13 +33,9 @@ const PositionRow = ({
 
 export const PositionSelector = () => {
   const [isLoading, setIsLoading] = useState(true);
-
   const [userPositions, setUserPositions] = useState<UserPositionDetails[]>([]);
-
   const { address, chainId } = useAccount();
-
   const { addMessage, chatId } = useAppContext();
-
   const [selectedPosition, setSelectedPosition] =
     useState<UserPositionDetails | null>(null);
 
@@ -86,7 +82,7 @@ export const PositionSelector = () => {
   return (
     <div className="space-y-4 m-4">
       <h3 className="text-lg font-medium text-white">Select Source Pool</h3>
-      <div className="h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
+      <div className="h-auto max-h-[300px] w-auto max-w-lg rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
         <div className="space-y-3">
           {userPositions?.length === 0 ? (
             <div className="flex items-center justify-between  text-white rounded-lg p-4 w-[300px] h-[80px]">
@@ -164,12 +160,12 @@ const PositionDetailsRow = ({
 
         <div
           className={`px-2 py-0.5 rounded-full text-sm flex items-center gap-1 ${
-            position.inRange ? "bg-green-400" : "bg-red-400"
+            position.inRange ? "bg-green-600" : "bg-red-500"
           }`}
         >
           <span
             className={`w-2 h-2 rounded-full ${
-              position.inRange ? "text-green-400" : "text-red-400"
+              position.inRange ? "text-green-600" : "text-red-500"
             }`}
           />
           {position.inRange ? "In Range" : "Out of Range"}

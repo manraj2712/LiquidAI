@@ -78,7 +78,7 @@ export default function AddTransactionDetails({
   const { poolSymbol, provider, token0, token1, zapInToken } = txnData.details;
 
   return (
-    <div className="bg-gray-40 border-thin w-auto max-w-xl border-gray-20 text-white rounded-lg p-6 space-y-6">
+    <div className="bg-gray-40 border-thin w-full max-w-xl border-gray-20 text-white rounded-lg p-6 space-y-6">
       <h2 className="text-xl font-medium">Transaction Details</h2>
 
       <div className="space-y-2">

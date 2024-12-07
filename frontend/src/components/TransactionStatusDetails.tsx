@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import Spinner from "./ui/Spinner";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function TransactionStatusDetails({
   status,
@@ -23,7 +24,7 @@ export default function TransactionStatusDetails({
       setShowIframe(true);
       const timer = setTimeout(() => {
         setShowIframe(false);
-      }, 1000);
+      }, 10000);
 
       return () => clearTimeout(timer);
     }
@@ -76,11 +77,11 @@ export default function TransactionStatusDetails({
       )}
       {showIframe && (
         <div className="fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <iframe
-            src="https://lottie.host/embed/73d66106-a190-4b09-8f5f-ba94538b0867/8tMgiXGzk3.lottie"
-            className="w-full h-full border-none"
-            title="Success Animation"
-          ></iframe>
+          <DotLottieReact
+            src="https://lottie.host/308d1c41-cdb9-4a03-adf8-3db4e5a7ed08/oha7wkDpqO.lottie"
+            loop
+            autoplay
+          />
         </div>
       )}
     </div>

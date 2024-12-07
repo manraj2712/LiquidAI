@@ -181,7 +181,7 @@ const PositionSelector = ({
       <h3 className="text-lg font-medium text-white mb-4">
         Select Your Position to Migrate
       </h3>
-      <div className="h-auto max-h-[300px] rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
+      <div className="h-auto max-h-[300px] w-auto max-w-lg rounded-lg border border-zinc-800 bg-gray-40 p-4 overflow-y-scroll">
         <div className="space-y-3">
           {userPositions.map((position, index) => (
             <PositionRow
@@ -230,12 +230,12 @@ const PositionDetailsRow = ({
 
         <div
           className={`px-2 py-0.5 rounded-full text-sm flex items-center gap-1 ${
-            position.inRange ? "bg-green-400" : "bg-red-400"
+            position.inRange ? "bg-green-600" : "bg-red-500"
           }`}
         >
           <span
             className={`w-2 h-2 rounded-full ${
-              position.inRange ? "text-green-400" : "text-red-400"
+              position.inRange ? "text-green-600" : "text-red-500"
             }`}
           />
           {position.inRange ? "In Range" : "Out of Range"}
@@ -293,10 +293,13 @@ const Migrate = () => {
   const { addMessage } = useAppContext();
   const [pools, setPools] = useState<PoolDetails[]>([]);
 
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
   const submit = async () => {
     if (!selectedPool || !selectedPosition) {
       return;
     }
+    setIsSubmitted(true);
     const position = selectedPosition;
     const pool = selectedPool;
 
@@ -309,7 +312,7 @@ const Migrate = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 space-y-6">
+    <div className="max-w-4xl w-4xl mx-auto p-6 space-y-6">
       <h2 className="text-lg font-medium text-white text-left bg-gray-40 px-4 py-2 rounded-lg border-thin border-gray-20 mb-4">
         Choose the pools to migrate your liquidity.
       </h2>
@@ -431,15 +434,17 @@ const Migrate = () => {
           </div>
         )}
 
-        <div className="flex items-center px-4 py-2 justify-center">
-          <Button
-            className="w-3/4 py-3 px-4 range-button-active disabled:bg-gray-500 disabled:cursor-not-allowed text-white font-medium rounded-full transition-colors"
-            onClick={submit}
-            disabled={!selectedPool || !selectedPosition}
-          >
-            Confirm
-          </Button>
-        </div>
+        {isSubmitted && (
+          <div className="flex items-center px-4 py-2 justify-center">
+            <Button
+              className="w-full py-3 px-4 range-button-active disabled:bg-gray-500 disabled:cursor-not-allowed text-white font-medium rounded-full transition-colors"
+              onClick={submit}
+              disabled={!selectedPool || !selectedPosition}
+            >
+              Confirm
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

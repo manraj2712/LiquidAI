@@ -1,4 +1,3 @@
-"use client";
 import { useAppContext } from "@/app/context/AppContext";
 import {
   Select,
@@ -15,13 +14,15 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { useAccount } from "wagmi";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 const Prompt = () => {
   const { input, setInput, createNewChat, addMessage, chatId } =
     useAppContext();
   const [newInput, setNewInput] = useState<string>("");
 
-  const { chainId } = useAccount();
+  const { chainId, isConnected } = useAccount();
+  const { openConnectModal } = useConnectModal(); // Get the function to open the modal
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewInput(e.target.value);
@@ -29,9 +30,9 @@ const Prompt = () => {
 
   const handleSubmit = async (inputValue: string) => {
     const trimmedInput = inputValue.toLowerCase().trim();
-    if (trimmedInput === "") return; // Prevent firing on empty input
+    if (trimmedInput === "") return;
     setInput(trimmedInput);
-    setNewInput(""); // Clear the input field
+    setNewInput("");
     addMessage({
       id: generateMessageId(),
       content: trimmedInput,
@@ -48,7 +49,7 @@ const Prompt = () => {
 
   const handleSelectChange = async (value: string) => {
     setNewInput(value);
-    await handleSubmit(value); // Use the selected value directly for submission
+    await handleSubmit(value);
   };
 
   const handleNewChat = () => {
@@ -65,7 +66,7 @@ const Prompt = () => {
   return (
     <>
       <div className="w-full flex items-center justify-center absolute bottom-0">
-        <div className="flex items-center bg-gray-30 px-4 py-2 border-thin border-gray-600  w-4/5 mb-6 mt-2 rounded-full">
+        <div className="flex items-center bg-gray-30 px-4 py-2 border-thin border-gray-600 w-4/5 mb-6 mt-2 rounded-full">
           <div className="relative flex-1">
             <div className="flex items-center gap-1">
               <Button
@@ -73,7 +74,7 @@ const Prompt = () => {
                   input.trim() === ""
                     ? "bg-gray-500 cursor-not-allowed"
                     : "range-button-active"
-                }  p-2 rounded-full w-6 h-6 transition-all`}
+                } p-2 rounded-full w-6 h-6 transition-all`}
                 onClick={input.trim() === "" ? undefined : handleNewChat}
                 disabled={input.trim() === ""}
               >
@@ -89,6 +90,7 @@ const Prompt = () => {
                 onChange={handleInputChange}
                 placeholder="Ask Liquid..."
                 className="w-full p-3 rounded-md bg-gray-30 text-white placeholder-gray-400 focus:outline-none transition-all z-20"
+                onClick={!isConnected ? openConnectModal : undefined}
               />
             </div>
           </div>
