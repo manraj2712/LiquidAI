@@ -74,7 +74,7 @@ export const PositionSelector = () => {
   }
   if (!isLoading && selectedPosition) {
     return (
-      <div className="w-full justify-start p-4 h-auto transition-all bg-gray-70 rounded-xl">
+      <div className="w-full max-w-lg justify-start p-4 h-auto transition-all bg-gray-70 rounded-xl">
         <PositionDetailsRow position={selectedPosition} />
       </div>
     );

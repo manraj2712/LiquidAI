@@ -117,7 +117,7 @@ export default function AddTransactionDetails({
                     <img
                       src={token.logo}
                       alt={`${token.symbol} icon`}
-                      className="w-full h-full"
+                      className="w-full h-full rounded-full"
                     />
                   </div>
                   <span>{token.symbol}</span>

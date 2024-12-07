@@ -34,7 +34,7 @@ const TokenRow = ({
           <img
             src={token.logo}
             alt={`${token.name} icon`}
-            className="w-full h-full"
+            className="w-full h-full rounded-full"
           />
         </div>
         <div className="flex flex-col gap-1 items-start">

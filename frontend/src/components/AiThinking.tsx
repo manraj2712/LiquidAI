@@ -25,7 +25,7 @@ const AIThinkingState: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4">
+    <div className="w-full max-w-xl space-y-4">
       <div className="flex items-start gap-3">
         <div className="flex-1 rounded-2xl bg-gradient-to-br from-gray-900/95 to-gray-800/95 p-6 backdrop-blur-sm animate-fade-in">
           <div className="space-y-4">
