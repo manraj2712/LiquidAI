@@ -1,14 +1,22 @@
-import { useEffect, useState } from "react";
+import { chainsData } from "@/config/chain";
 import { txnStatus } from "@/constants/transaction";
-import Spinner from "./ui/Spinner";
 import { TxnStatus } from "@/types/txn";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import Spinner from "./ui/Spinner";
 
 export default function TransactionStatusDetails({
   status,
+  txnHash,
 }: {
   status: TxnStatus;
+  txnHash?: string;
 }) {
   const [showIframe, setShowIframe] = useState(false);
+
+  const { chainId } = useAccount();
 
   useEffect(() => {
     if (status === txnStatus.success) {
@@ -43,7 +51,17 @@ export default function TransactionStatusDetails({
         ) : ([txnStatus.failed, txnStatus.success] as string[]).includes(
             status
           ) ? (
-          <img src={"/tick.svg"} alt="tick-icon" className="w-4" />
+          <Link
+            href={`${chainsData[chainId!].blockExplorerUrl}/tx/${txnHash}`}
+            className="cursor-pointer"
+            target="_blank"
+          >
+            <Image
+              src={"/link.svg"}
+              alt="tick-icon"
+              className="w-4 cursor-pointer"
+            />
+          </Link>
         ) : null}
       </div>
       {(txnStatus.success === status || txnStatus.failed === status) && (

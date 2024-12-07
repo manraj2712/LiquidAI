@@ -49,6 +49,7 @@ export const useAddLiquidity = () => {
   const { approve } = useApprove();
   const { address: account, chainId } = useAccount();
   const [status, setStatus] = useState<TxnStatus | null>(null);
+  const [txnHash, setTxnHash] = useState<HexString | null>(null);
 
   const wagmiConfig = useConfig();
 
@@ -125,6 +126,8 @@ export const useAddLiquidity = () => {
       kzg: {} as Kzg,
     });
 
+    setTxnHash(txnHash);
+
     setStatus(txnStatus.mining);
 
     const publicClient = getPublicClient(chainId!);
@@ -145,5 +148,6 @@ export const useAddLiquidity = () => {
     status,
     buildAddLiquidity,
     sendAddLiquidityTxn,
+    txnHash,
   };
 };

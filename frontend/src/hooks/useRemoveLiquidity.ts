@@ -43,6 +43,7 @@ export const useRemoveLiquidity = () => {
   const wagmiConfig = useConfig();
   const { approveNft, isNFTApproved } = useApprove();
   const [txnStatusState, setTxnStatusState] = useState<TxnStatus | null>(null);
+  const [txnHash, setTxnHash] = useState<HexString | null>(null);
 
   const buildRemoveLiquidity = async (request: {
     poolAddress: HexString;
@@ -122,6 +123,8 @@ export const useRemoveLiquidity = () => {
       kzg: {} as Kzg,
     });
 
+    setTxnHash(txnHash);
+
     const publicClient = getPublicClient(chainId!);
 
     const txnReceipt = await publicClient.waitForTransactionReceipt({
@@ -150,5 +153,6 @@ export const useRemoveLiquidity = () => {
     txnStatus: txnStatusState,
     buildRemoveLiquidity,
     sendRemoveLiquidityTxn,
+    txnHash,
   };
 };

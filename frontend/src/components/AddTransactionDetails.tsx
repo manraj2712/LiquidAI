@@ -54,7 +54,8 @@ export default function AddTransactionDetails({
     fetchTxnData();
   }, []);
 
-  const { buildAddLiquidity, sendAddLiquidityTxn, status } = useAddLiquidity();
+  const { buildAddLiquidity, sendAddLiquidityTxn, status, txnHash } =
+    useAddLiquidity();
 
   console.log(status);
 
@@ -172,7 +173,9 @@ export default function AddTransactionDetails({
           </div>
         </div>
 
-        {status && <TransactionStatusDetails status={status} />}
+        {status && (
+          <TransactionStatusDetails status={status} txnHash={txnHash!} />
+        )}
       </div>
 
       <Button

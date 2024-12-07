@@ -17,7 +17,7 @@ export default function MigrateTransactionDetails({
 }: {
   message: Message;
 }) {
-  const { buildMigrateLiquidity, sendMigrateLiquidityTxn, txnStatus } =
+  const { buildMigrateLiquidity, sendMigrateLiquidityTxn, txnStatus, txnHash } =
     useMigrateLiquidity();
   const [isLoading, setIsLoadinng] = useState(true);
   const [txnData, setTxnData] = useState<Omit<
@@ -144,7 +144,9 @@ export default function MigrateTransactionDetails({
           <span>{"20%"}</span>
         </div>
       </div>
-      {txnStatus && <TransactionStatusDetails status={txnStatus} />}
+      {txnStatus && (
+        <TransactionStatusDetails status={txnStatus} txnHash={txnHash!} />
+      )}
 
       <Button
         className="w-full rounded-full bg-gradient-to-r range-button-active text-white py-6"

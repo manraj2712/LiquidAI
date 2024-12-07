@@ -45,6 +45,7 @@ export const useMigrateLiquidity = () => {
   const { approveNft, isNFTApproved } = useApprove();
 
   const [txnStatusState, setTxnStatusState] = useState<TxnStatus | null>(null);
+  const [txnHash, setTxnHash] = useState<HexString | null>(null);
 
   const buildMigrateLiquidity = async (
     request: Omit<MigrateLiquidityRequest, "account" | "chainId">
@@ -112,6 +113,8 @@ export const useMigrateLiquidity = () => {
       kzg: {} as Kzg,
     });
 
+    setTxnHash(txnHash);
+
     const publicClient = getPublicClient(chainId!);
 
     const txnReceipt = await publicClient.waitForTransactionReceipt({
@@ -139,5 +142,6 @@ export const useMigrateLiquidity = () => {
     buildMigrateLiquidity,
     sendMigrateLiquidityTxn,
     txnStatus: txnStatusState,
+    txnHash,
   };
 };

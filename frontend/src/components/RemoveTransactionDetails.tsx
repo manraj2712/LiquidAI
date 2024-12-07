@@ -63,7 +63,7 @@ export default function RemoveTransactionDetails({
     fetchTxnData();
   }, []);
 
-  const { buildRemoveLiquidity, sendRemoveLiquidityTxn, txnStatus } =
+  const { buildRemoveLiquidity, sendRemoveLiquidityTxn, txnStatus, txnHash } =
     useRemoveLiquidity();
 
   const data = message.content as RemoveLiquidityRequest;
@@ -189,7 +189,9 @@ export default function RemoveTransactionDetails({
         </div>
       </div>
 
-      {txnStatus && <TransactionStatusDetails status={txnStatus} />}
+      {txnStatus && (
+        <TransactionStatusDetails status={txnStatus} txnHash={txnHash!} />
+      )}
 
       <Button
         className="w-full rounded-full bg-gradient-to-r range-button-active text-white py-6"
