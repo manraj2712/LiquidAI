@@ -64,7 +64,7 @@ const PoolSelector = ({
           <span className="text-lg text-white font-medium">{`CL${pool.fee}`}</span>
 
           <span className="text-lg text-white font-medium">
-            {pool.token0.symbol}/{pool.token1.symbol}``
+            {pool.token0.symbol}/{pool.token1.symbol}
           </span>
         </div>
         <span className="bg-zinc-800 text-white px-2 py-0.5 rounded-full text-sm">
