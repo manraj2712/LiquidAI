@@ -7,6 +7,7 @@ def integrate_files_to_string():
         "add_liquidity_schema": "add_liquidity_schema.json",
         "remove_liquidity_schema": "remove_liquidity_schema.json",
         "migrate_liquidity_schema": "migrate_liquidity_schema.json",
+        "chain_infomation": "chain_info.json",
         "provider_info": "provider_info.json",
         "pools_information": "pools_information.json",
         "tokens_information": "tokens_information.json",

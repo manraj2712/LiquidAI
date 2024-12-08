@@ -58,7 +58,7 @@ export const uniswapV3Pools: ProviderPools = {
     "0x3F6CFB3e592F218F426F3457828779349FEa6389": {
       provider: uniswapDetails.id,
       fee: 100,
-      tickSpacing: 1,
+      tickSpacing: 3,
       address: "0x3F6CFB3e592F218F426F3457828779349FEa6389",
       token0: {
         decimals: 8,
@@ -71,5 +71,21 @@ export const uniswapV3Pools: ProviderPools = {
         symbol: "USDC",
       },
     },
+    "0x31083a78E11B18e450fd139F9ABEa98CD53181B7": {
+      provider: uniswapDetails.id,
+      fee: 100,
+      tickSpacing: 1,
+      address: "0x31083a78E11B18e450fd139F9ABEa98CD53181B7",
+      token0: {
+        decimals: 6,
+        address: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+        symbol: "USDC",
+      },
+      token1: {
+        decimals: 6,
+        address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
+        symbol: "USDT",
+      },
+    }
   },
 };
