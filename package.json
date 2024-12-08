@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@urql/core": "^5.0.8",
+    "urql": "^4.2.1"
+  }
+}

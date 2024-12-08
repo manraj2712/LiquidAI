@@ -18,6 +18,7 @@ import {
   findUserPositionsByPoolSymbol,
 } from "./services/position";
 import { getRemoveLiquidityData } from "./services/removeLiquidity";
+import { getPositionsFromGraph } from "@/app/api/user/positions/route";
 
 export class UniswapProvider implements IProvider {
   details: ProviderDetails = uniswapDetails;
@@ -122,6 +123,10 @@ export class UniswapProvider implements IProvider {
     };
   };
   getAllPools = async (chainId: number) => {
+    await getPositionsFromGraph(
+      "0x99BCEBf44433E901597D9fCb16E799a4847519f6",
+      137
+    );
     return this.pools[chainId] ? Object.values(this.pools[chainId]) : [];
   };
 }
