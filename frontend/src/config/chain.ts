@@ -27,7 +27,7 @@ export const chainsData: ChainsData = {
       `https://polygon-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_KEY}`,
     ],
     name: "Polygon",
-    zap: "0xFf2934Ce99CAd2E36140ab9D4b1A1f85E0D7FFc8",
+    zap: "0x71E5E91C032354BbD9Dc29eEaCd5A3D2893b5f9F",
     router: "0xF708e11A7C94abdE8f6217B13e6fE39C8b9cC0a6",
   },
 };

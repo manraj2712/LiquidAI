@@ -3,6 +3,7 @@ import { HexString } from "@/types/string";
 import { aerodromePools } from "../config/pools";
 import { AerodromeNftManager } from "../contracts/nftManager";
 import { AerodromeV3Pool } from "../contracts/v3Pool";
+import { supportedChainIds } from "@/config/chain";
 
 export const findUserPositionsByPoolSymbol = async ({
   poolSymbol,
@@ -43,6 +44,7 @@ export const fetchUserPositions = async ({
   address: HexString;
   chainId: number;
 }): Promise<ProviderPositionDetails[]> => {
+  if (chainId !== supportedChainIds.base) return [];
   const nftManager = new AerodromeNftManager({ chainId });
 
   const userNftsDetails = await nftManager.getUserNfts({ account: address });

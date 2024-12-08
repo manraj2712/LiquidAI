@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   try {
     const { chatId, message, chainId } = await request.json();
     const response = await callApi({
-      url: "https://liquidai-lqtpzlbt3q-lz.a.run.app/chat",
+      url: "http://localhost:8000/chat",
       options: {
         method: "POST",
         data: {

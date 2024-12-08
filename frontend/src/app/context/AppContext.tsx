@@ -1,6 +1,9 @@
 "use client";
+import { supportedChainIds } from "@/config/chain";
+import { getResponseForInput } from "@/services/ai/sendMessage";
 import { Message } from "@/types/message";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 
 interface AppContextType {
   input: string;
@@ -18,6 +21,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [input, setInput] = useState<string>("");
 
   const [chatId, setChatId] = useState<string>("");
+
+  const { chainId } = useAccount();
 
   const [messages, setMessages] = useState<Message[]>([]);
 
@@ -38,11 +43,26 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     console.log("newChatId", newChatId);
     setChatId(newChatId);
     setMessages([]);
+    return newChatId;
   };
 
   useEffect(() => {
-    createNewChatId();
-  }, []);
+    const newChatId = createNewChatId();
+    if (
+      chainId && [
+        (Object.values(supportedChainIds) as number[]).includes(chainId),
+      ]
+    ) {
+      getResponseForInput({
+        chainId,
+        chatId: newChatId,
+        message: `set the default chain id for this chat as ${chainId}`,
+        addMessage,
+        removeMessage,
+        showLoader: false,
+      });
+    }
+  }, [chainId]);
 
   return (
     <AppContext.Provider

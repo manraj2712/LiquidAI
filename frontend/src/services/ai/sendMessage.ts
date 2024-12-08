@@ -9,21 +9,25 @@ export const getResponseForInput = async ({
   chainId,
   addMessage,
   removeMessage,
+  showLoader = true,
 }: {
   chatId: string;
   message: string;
   chainId: number;
   addMessage: (message: Message) => void;
   removeMessage: (messageId: string) => void;
+  showLoader?: boolean;
 }): Promise<Message> => {
   const messageId = generateMessageId();
   try {
-    addMessage({
-      id: messageId,
-      content: message,
-      contentType: contentType.aiThinking,
-      from: "bot",
-    });
+    if (showLoader) {
+      addMessage({
+        id: messageId,
+        content: message,
+        contentType: contentType.aiThinking,
+        from: "bot",
+      });
+    }
     const response = await callApi({
       url: "/api/chat",
       options: {
@@ -45,6 +49,8 @@ export const getResponseForInput = async ({
       from: "bot",
     };
   } finally {
-    removeMessage(messageId);
+    if (showLoader) {
+      removeMessage(messageId);
+    }
   }
 };
